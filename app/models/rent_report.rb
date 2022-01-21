@@ -2,6 +2,7 @@ require 'CSV'
 class RentReport
 
   def import_csv
+    #imports csv file
     csv_text = File.read(Rails.root.join('public', 'local', 'units-and-residents.csv'))
     csv = CSV.parse(csv_text, :headers => true)
     csv.each do |row|
@@ -12,6 +13,7 @@ class RentReport
   end
 
   def run_rpt(date)
+    #runs the report
     occupied = 0
     leased = 0
     date = Date.strptime(date, '%m/%d/%Y')
@@ -31,6 +33,7 @@ class RentReport
 
   end
 end
+#Business Rules
 # Rent Roll Report
 # A rent roll report lists units in order by unit number, and includes the following data:
 #
